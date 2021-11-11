@@ -11,6 +11,7 @@ class Topic(models.Model):
         return self.name
 
 class Clase(models.Model):
+    #addTotalPercentage
     host = models.ForeignKey(User, on_delete=models.SET_NULL,null=True )
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL,null=True)
     #participants
@@ -18,13 +19,18 @@ class Clase(models.Model):
     description = models.TextField(null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    progress = models.IntegerField(default=0)
 
 class Module(models.Model):
+    #addTotalPercentage
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
+    status = models.BooleanField(default=False)
 
 class ModuleTask(models.Model):
+    #add TIME, percentage
     name = models.CharField(max_length=200)
     instructions = models.TextField(null=True, blank=True)
     image = models.ImageField()
     pdf = models.FileField(null=True, blank=True)
+    status = models.BooleanField(default=False)
