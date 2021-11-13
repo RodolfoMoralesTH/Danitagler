@@ -20,6 +20,9 @@
         font-size: 2rem;
         padding: 2rem;
     }
+    .menu-options, .topics{
+        padding: 2rem;
+    }
     .menu{
         background-color: rgb(255, 186, 186);
         padding: 2rem 2rem;
@@ -34,8 +37,17 @@
         align-items: center;
         font-weight: normal;
     }
-    li{
-        
+    .clase-item{
+        padding: 2rem 3rem;
+        background-color: rgb(248, 100, 100);
+    }
+    .clases{
+        padding: 5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 1rem;
+        justify-content: space-evenly;
+        font-size: 1.5rem;
     }
     
 </style>
@@ -63,6 +75,23 @@
             <span>Dashboard</span>
         </div>
         <!-- this is where we'll add classes -->
+    </div>
+
+    <div class="clases">
+        {% for clase in clases %} 
+
+        <a href="{% url 'class' clase.id %}">
+            <div class="clase-item">
+                <div class="clase-photo">
+    
+                </div>
+                <div class="clase-text">
+    
+                    <p>{{clase.name}}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
     </div>
     
 </body>

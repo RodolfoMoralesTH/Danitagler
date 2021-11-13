@@ -1,0 +1,70 @@
+{% extends 'main.html' %}
+{% load static %}
+{% static 'images' as base_url %}
+{% block content %}
+
+<style>
+    .modules{
+        padding: 4rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 1rem;
+    }
+    .module-card{
+        cursor: pointer;
+        height: 20rem;
+        padding-top: 1rem;
+        background-color: rgb(255, 157, 157);
+        font-size: 2rem;
+        transition: transform .4s;
+        background-size: cover;
+        background-position: bottom;
+        box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+        border-radius: 3px;
+    }
+    .module-image{
+        height:5rem;
+        width:5rem;
+    }
+    .module-name{
+        padding: 1rem;
+        width: 75%;
+        background-color: rgb(255, 157, 157);
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    .module-card:hover{
+        box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px;
+        transform: translateY(-1rem);
+    }
+    @keyframes moveUp {
+    0%{
+        box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+        
+        transform: translateY(0rem);
+    }
+
+
+      
+    100%{
+        box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px;
+        transform: translateY(-1rem);
+    }
+}
+   
+
+</style>
+
+<div class="header">
+    <h2>{{class1.name}}</h2>
+    <span>{{class1.description}}</span>
+</div>
+
+<div class="modules">
+{% for module in modules %}
+<div class="module-card" style="background-image: url('../static/images/{{module.image}}');">
+    
+    <div class="module-name">{{module.name}}</div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
